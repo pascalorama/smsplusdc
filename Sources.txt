@@ -1,0 +1,14 @@
+What's new since Dreamcast 0.1 release :
+- screen adjust display current game texture
+- single game emu : auto load the game call boot.gg or boot.sms on the root
+- try to do a screenshot slideshow, but too cd lens intensive
+- 3d glasses faking support
+
+Huge thanks goes to 
+Gentil Graphiste for his really nice gui design,
+Charles Mac Donald for this amazing emu,
+Takayama Fumihiko for the VMU code and off course Dan Potter for making this possible.
+
+if i forgot anyone, it's not intend
+
+pascal

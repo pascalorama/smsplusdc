@@ -1,0 +1,84 @@
+# Project: smsplus
+# Makefile created by Dev-C++ 4.9.8.0
+
+CPP  = sh-elf-g++.exe
+CC   = sh-elf-gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = obj/render.o obj/sms.o obj/sn76496.o obj/system.o obj/vdp.o obj/dc_adjust.o obj/dc_config.o obj/dc_emu.o obj/dc_font.o obj/dc_gui.o obj/dc_main.o obj/dc_pcm.o obj/dc_save.o obj/dc_snap.o obj/dc_sound.o obj/dc_title.o obj/dc_vmu.o obj/z80.o obj/dc_bookmark.o $(RES)
+LINKOBJ  = obj/render.o obj/sms.o obj/sn76496.o obj/system.o obj/vdp.o obj/dc_adjust.o obj/dc_config.o obj/dc_emu.o obj/dc_font.o obj/dc_gui.o obj/dc_main.o obj/dc_pcm.o obj/dc_save.o obj/dc_snap.o obj/dc_sound.o obj/dc_title.o obj/dc_vmu.o obj/z80.o obj/dc_bookmark.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/dclib" -ml -m4-single-only -nostartfiles -nostdlib -Wl,-Ttext=0x8c010000 C:/Dev-Cpp/sh-elf/startup.o romdisk.o -lpng -lz -lbz2 -lm -lkallisti -lgcc   
+INCS =  -I"C:/Dev-Cpp/dcinclude" 
+CXXINCS =  -I"C:/Dev-Cpp/sh-elf/include/g++-v3/backward"  -I"C:/Dev-Cpp/dcinclude"  -I"C:/Dev-Cpp/sh-elf/include/g++-v3" 
+BIN  = smsplus.elf
+CXXFLAGS = $(CXXINCS)-Wall -g -ml -m4-single-only -O2 -fno-builtin -fno-strict-aliasing -fomit-frame-pointer -fno-optimize-sibling-calls  -D_arch_dreamcast    
+CFLAGS = $(INCS)-Wall -g -ml -m4-single-only -O4 -fstrict-aliasing -fomit-frame-pointer -ffast-math -falign-loops -D_arch_dreamcast -DLSB_FIRST -DALIGN_DWORD -DNO_FM -DDC  -I. -I./cpu -I./dc -I./sound -I./cpu  
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before smsplus.elf all-after
+
+include Dreamcast.Mak
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	$(CC) $(LINKOBJ) -o "smsplus.elf" $(LIBS)
+
+obj/render.o: render.c
+	$(CC) -c render.c -o obj/render.o $(CFLAGS)
+
+obj/sms.o: sms.c
+	$(CC) -c sms.c -o obj/sms.o $(CFLAGS)
+
+obj/sn76496.o: sn76496.c
+	$(CC) -c sn76496.c -o obj/sn76496.o $(CFLAGS)
+
+obj/system.o: system.c
+	$(CC) -c system.c -o obj/system.o $(CFLAGS)
+
+obj/vdp.o: vdp.c
+	$(CC) -c vdp.c -o obj/vdp.o $(CFLAGS)
+
+obj/dc_adjust.o: dc/dc_adjust.c
+	$(CC) -c dc/dc_adjust.c -o obj/dc_adjust.o $(CFLAGS)
+
+obj/dc_config.o: dc/dc_config.c
+	$(CC) -c dc/dc_config.c -o obj/dc_config.o $(CFLAGS)
+
+obj/dc_emu.o: dc/dc_emu.c
+	$(CC) -c dc/dc_emu.c -o obj/dc_emu.o $(CFLAGS)
+
+obj/dc_font.o: dc/dc_font.c
+	$(CC) -c dc/dc_font.c -o obj/dc_font.o $(CFLAGS)
+
+obj/dc_gui.o: dc/dc_gui.c
+	$(CC) -c dc/dc_gui.c -o obj/dc_gui.o $(CFLAGS)
+
+obj/dc_main.o: dc/dc_main.c
+	$(CC) -c dc/dc_main.c -o obj/dc_main.o $(CFLAGS)
+
+obj/dc_pcm.o: dc/dc_pcm.c
+	$(CC) -c dc/dc_pcm.c -o obj/dc_pcm.o $(CFLAGS)
+
+obj/dc_save.o: dc/dc_save.c
+	$(CC) -c dc/dc_save.c -o obj/dc_save.o $(CFLAGS)
+
+obj/dc_snap.o: dc/dc_snap.c
+	$(CC) -c dc/dc_snap.c -o obj/dc_snap.o $(CFLAGS)
+
+obj/dc_sound.o: dc/dc_sound.c
+	$(CC) -c dc/dc_sound.c -o obj/dc_sound.o $(CFLAGS)
+
+obj/dc_title.o: dc/dc_title.c
+	$(CC) -c dc/dc_title.c -o obj/dc_title.o $(CFLAGS)
+
+obj/dc_vmu.o: dc/dc_vmu.c
+	$(CC) -c dc/dc_vmu.c -o obj/dc_vmu.o $(CFLAGS)
+
+obj/z80.o: cpu/z80.c
+	$(CC) -c cpu/z80.c -o obj/z80.o $(CFLAGS)
+
+obj/dc_bookmark.o: dc/dc_bookmark.c
+	$(CC) -c dc/dc_bookmark.c -o obj/dc_bookmark.o $(CFLAGS)
